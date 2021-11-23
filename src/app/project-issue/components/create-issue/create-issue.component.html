@@ -1,0 +1,71 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">New Issue</h4>
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="issueForm" (ngSubmit)="saveChanges()">
+    <div class="row mb-3">
+      <label for="title" class="col-sm-2 col-form-label">Project</label>
+      <div class="col-sm-10">
+        <select id="status" class="form-select" formControlName="projectid" [disabled]="true">
+          <option [ngValue]="current_project.id">{{current_project.projectname}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="title" class="col-sm-2 col-form-label">Issue Title</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" formControlName="issue_title">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="status" class="col-sm-2 col-form-label">Status</label>
+      <div class="col-sm-10">
+        <select id="status" class="form-select" formControlName="status">
+          <option ngValue="New">New</option>
+          <option ngValue="Earliest Convenience">Earliest Convenience</option>
+          <option ngValue="Critical Path">Critical Path</option>
+          <option ngValue="Within 1 Week">Within 1 Week</option>
+          <option ngValue="Within 2 Weeks">Within 2 Weeks</option>
+          <option ngValue="Prior to Production">Prior to Production</option>
+          <option ngValue="Resolved">Resolved</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="type" class="col-sm-2 col-form-label">Topic Type</label>
+      <div class="col-sm-10">
+        <select class="form-select" formControlName="topic_type">
+          <option ngValue="Design">Design</option>
+          <option ngValue="Question">Question</option>
+          <option ngValue="Training">Training</option>
+          <option ngValue="Inspection">Inspection</option>
+          <option ngValue="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="type" class="col-sm-2 col-form-label">Assignee</label>
+      <div class="col-sm-10">
+        <select class="form-select" formControlName="assigned_to">
+          <option [ngValue]="null"></option>
+          <ng-container *ngFor="let user of (userOptions$ | async)">
+            <option [ngValue]="user.id">{{user.username}}</option>
+          </ng-container>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="description" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="description" rows="5" formControlName="description"></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="saveChanges()" [disabled]="issueForm.invalid">Submit</button>
+  <button type="button" class="btn btn-link" (click)="bsModalRef.hide()">Cancel</button>
+</div>

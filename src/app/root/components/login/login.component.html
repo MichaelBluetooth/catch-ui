@@ -1,0 +1,26 @@
+<div class="d-flex align-items-center" style="height: 100vh">
+  <div class="row flex-fill">
+    <div class="col-md-6 d-flex align-items-center justify-content-end">
+        <h3>Welcome to Holzraum Catch</h3>
+        <img src="assets/holz_logo.jpg" class="img-fluid">
+    </div>
+    <div class="col-md-3">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" autocomplete="off" formControlName="username">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" autocomplete="off" formControlName="password">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="remember" formControlName="rememberMe">
+          <label class="form-check-label" for="remember">Remember Me</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </div>
+  </div>
+</div>

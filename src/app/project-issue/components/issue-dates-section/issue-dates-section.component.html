@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-5 text-muted">
+    Created:
+  </div>
+  <div class="col-md-7">
+    {{issue.created_on | date:'short'}}
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-md-5 text-muted">
+    Last Updated:
+  </div>
+  <div class="col-md-7">
+    {{issue.updated_on | date:'short'}}
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="saveChanges()">
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" autocomplete="off" formControlName="username">
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="firstName" autocomplete="off" formControlName="first_name">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="lastName" autocomplete="off" formControlName="last_name">
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="text" class="form-control" id="email" autocomplete="off" formControlName="email">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="displayUnits" class="form-label">Use Display Units</label>
+      <select id="displayUnits" class="form-select" formControlName="display_units">
+        <option ngValue="Imperial">Imperial</option>
+        <option ngValue="Metric">Metric</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <label for="details" class="form-label">About Me</label>
+      <textarea id="details" class="form-control" rows="4" autocomplete="off" formControlName="about_me"></textarea>
+    </div>
+  </div>
+
+  <button id="updateUserBtn" class="btn btn-secondary" [disabled]="form.invalid">Save Changes</button>
+</form>

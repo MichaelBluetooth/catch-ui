@@ -1,0 +1,18 @@
+<div class="section-container">
+  <span>
+    <ng-content select=".collapsible-section-header">
+    </ng-content>
+  </span>
+  <hr />
+  <button class="btn btn-default plus-btn" *ngIf="showGearIcon" (click)="gearClicked.emit()"><i
+      class='bx bx-cog'></i></button>
+  <button class="btn btn-default plus-btn" *ngIf="showPlusIcon" (click)="plusClicked.emit()"><i
+      class='bx bx-plus-medical'></i></button>
+  <button class="btn btn-default toggle-btn" *ngIf="collapsed" (click)="toggle()"><i
+      class='bx bxs-chevron-left'></i></button>
+  <button class="btn btn-default toggle-btn" *ngIf="!collapsed" (click)="toggle()"><i class='bx bxs-chevron-down' ></i></button>
+</div>
+<div *ngIf="!collapsed" class="section-content">
+  <ng-content select=".collapsible-section-content">
+  </ng-content>
+</div>

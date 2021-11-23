@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-5 text-muted">
+    Creator:
+  </div>
+  <div class="col-md-7">
+    <a [routerLink]="['/users', issue.created_by.id]">{{issue.created_by.username}}</a>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-md-5 text-muted">
+    Assignee:
+  </div>
+  <div class="col-md-7">
+    <ng-container *ngIf="issue.assignee">
+      <a [routerLink]="['/users', issue.assignee.id]">{{issue.assignee.username}}</a>
+    </ng-container>
+    <ng-container *ngIf="!issue.assignee">
+      <i>No Assignee</i>
+    </ng-container>
+  </div>
+</div>

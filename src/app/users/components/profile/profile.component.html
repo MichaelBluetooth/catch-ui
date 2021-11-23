@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-7">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">User Profile</h5>
+        <app-user-form [user]="user$ | async"></app-user-form>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <h5 class="card-title">Change Password</h5>
+        <app-change-password [user]="user$ | async"></app-change-password>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="card">
+      <div class="card-body">
+        <app-user-card [user]="user$ | async"></app-user-card>
+      </div>
+    </div>
+  </div>
+</div>

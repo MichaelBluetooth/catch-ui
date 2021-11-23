@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-body">
+    <h1>
+      <ng-container *ngIf="existingId">Edit Function</ng-container>
+      <ng-container *ngIf="!existingId">Add Function</ng-container>
+    </h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label for="function_name" class="form-label">Function Name</label>
+          <input #functionName type="text" class="form-control" id="function_name" autocomplete="off" formControlName="function_name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="obsolete" formControlName="obsolete">
+            <label class="form-check-label" for="obsolete">
+              Obsolete
+            </label>
+            <div class="form-text">
+              Using Obsolete will prevent the use of the term in future imports. Those rows will have function=HZ_UNKNOWN
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label for="deprecated_to" class="form-label">Deprecated To</label>
+          <input type="text" class="form-control" id="deprecated_to" autocomplete="off" formControlName="deprecated_to">
+          <div class="form-text">
+            "Deprecated To" converts the incoming function matches to this term for new imports. It must be an existing
+            Function name.
+          </div>
+        </div>
+      </div>
+    
+      <button id="saveBtn" class="btn btn-secondary" [disabled]="form.invalid">Save Changes</button>
+    </form>
+    
+  </div>
+</div>

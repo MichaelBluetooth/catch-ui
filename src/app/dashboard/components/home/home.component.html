@@ -1,0 +1,160 @@
+<ng-container *ngIf="(summary$ | async) as summary">
+  <div class="mb-4">
+    <h3>{{summary.current_project.projectname}}</h3>
+    <span class="fs-5">SIMM Phase: {{summary.selected_phase}}</span>
+    <div>
+      {{summary.current_project.description}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">
+          Project Reports
+        </div>
+        <div class="card-body">
+          <ul>
+            <li *ngFor="let report of summary.project_reports">
+              <a [routerLink]="['/catch', report.id]">{{report.s_title}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header">
+          Project Information
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 fw-bold">Address</div>
+                <div class="col-md-6">{{summary.current_project.address}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 fw-bold">Architect</div>
+                <div class="col-md-6">{{summary.current_project.architect}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 fw-bold">Builder</div>
+                <div class="col-md-6">{{summary.current_project.builder}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 fw-bold">Owner</div>
+                <div class="col-md-6">{{summary.current_project.owner}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 fw-bold">Energy Modeler</div>
+                <div class="col-md-6">{{summary.current_project.energy_modeler}}</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 fw-bold">Structural Engineer</div>
+                <div class="col-md-6">{{summary.current_project.pro_engineer}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 fw-bold">MEP Engineer</div>
+                <div class="col-md-6">{{summary.current_project.mep_engineer}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 fw-bold">Level One sqft</div>
+                <div class="col-md-6">{{summary.current_project.level1_sqft}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 fw-bold">Level Two sqft</div>
+                <div class="col-md-6">{{summary.current_project.level2_sqft}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 fw-bold">Level Three sqft</div>
+                <div class="col-md-6">{{summary.current_project.level3_sqft}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Recent Searches
+        </div>
+        <div class="card-body">
+          <ul>
+            <li *ngFor="let search of summary.search_history">
+              <a [routerLink]="[search.actionroute]">{{search.qrytitle}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mt-4">
+      <div class="card">
+        <div class="card-header">
+          Filter By Panel Areas (sqft) <span
+            class="badge rounded-pill bg-dark">{{summary.charts.apanel_stats.length}}</span>
+        </div>
+        <div class="card-body">
+          <app-chart [data]="summary.charts.apanel_stats"></app-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mt-4">
+      <div class="card">
+        <div class="card-header">
+          Filter By Scopes <span class="badge rounded-pill bg-dark">{{summary.charts.ascope_stats.length}}</span>
+        </div>
+        <div class="card-body">
+          <app-chart [data]="summary.charts.ascope_stats"></app-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6 mt-4">
+      <div class="card">
+        <div class="card-header">
+          Filter By Functions <span class="badge rounded-pill bg-dark">{{summary.charts.afunc_stats.length}}</span>
+        </div>
+        <div class="card-body">
+          <app-chart [data]="summary.charts.afunc_stats"></app-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mt-4">
+      <div class="card">
+        <div class="card-header">
+          Filter By Materials <span class="badge rounded-pill bg-dark">{{summary.charts.amat_stats.length}}</span>
+        </div>
+        <div class="card-body">
+          <app-chart [data]="summary.charts.amat_stats"></app-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mt-4">
+      <div class="card">
+        <div class="card-header">
+          Filter By Names <span class="badge rounded-pill bg-dark">{{summary.charts.aname_stats.length}}</span>
+        </div>
+        <div class="card-body">
+          <app-chart [data]="summary.charts.aname_stats"></app-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

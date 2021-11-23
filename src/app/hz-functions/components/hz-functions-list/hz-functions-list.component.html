@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-4 mb-4">
+    <div class="d-flex justify-content-between">
+      <h3>Functions:</h3>
+      <a [routerLink]="['/hzfunctions']" class="btn btn-secondary mb-4">New Function</a>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let fn of (hzFunctions$ | async).results; let idx = index">
+        <a [routerLink]="['/hzfunctions', fn.id]">
+          <ng-container *ngIf="fn.deprecated_to">
+            {{fn.function_name}} >> {{fn.deprecated_to}}
+          </ng-container>
+          <ng-container *ngIf="!fn.deprecated_to && !fn.obsolete">
+            {{fn.function_name}}
+          </ng-container>
+          <ng-container *ngIf="!fn.deprecated_to && fn.obsolete">
+            <del>{{fn.function_name}}</del>
+          </ng-container>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

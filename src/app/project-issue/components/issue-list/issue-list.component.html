@@ -1,0 +1,60 @@
+<div class="d-flex  align-items-center justify-content-between">
+  <div>
+    <span class="text-muted hidden-xs hidden-sm">QUICK FILTERS:</span>
+    <div class="btn-group ms-4 me-4">
+      <a href="#" class="btn btn-secondary filter-btn-sm">All</a>
+      <a href="#" class="btn btn-secondary filter-btn-sm">Open</a>
+    </div>
+    <a href="#" class="btn btn-secondary filter-btn filter-btn-lg">My Issues</a>
+  </div>
+  <div>
+    <button class="btn btn-secondary filter-btn filter-btn-lg" (click)="newIssue()">New Issue</button>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        Project
+      </th>
+      <th>
+        Title
+      </th>
+      <th>
+        Status
+      </th>
+      <th>
+        Created By
+      </th>
+      <th>
+        Created
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let issue of (issues$ | async).results; let idx = index">
+      <td>
+        {{idx + 1}}
+      </td>
+      <td>
+        {{issue.project.projectname}}
+      </td>
+      <td>
+        <a [routerLink]="['/issues', issue.id]">{{issue.issue_title}}</a>
+      </td>
+      <td>
+        <span class="badge rounded-pill bg-primary">{{issue.status}}</span>
+      </td>
+      <td>
+        {{issue.created_by?.username}}
+      </td>
+      <td>
+        {{issue.created_on | date:'short'}}
+      </td>
+    </tr>
+  </tbody>
+</table>

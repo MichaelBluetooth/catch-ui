@@ -1,0 +1,56 @@
+  <header #header class="header" id="header" [class.body-pd]="expanded">
+    <div #toggle class="header_toggle" (click)="toggleNavbar()">
+      <i class='bx bx-menu' id="header-toggle" [class.bx-menu]="!expanded" [class.bx-x]="expanded"></i>
+    </div>
+    <div class="header_img" [routerLink]="['/users', 'profile']">
+      <i class='bx bxs-user-circle' style="font-size: 3rem;"></i>
+    </div>
+  </header>
+  <div #nav class="l-navbar" id="nav-bar" [class.show]="expanded">
+    <nav class="nav">
+      <div>
+        <a href="#" class="nav_logo">
+          <i class='bx bx-layer nav_logo-icon'></i>
+          <span class="nav_logo-name">Holzraum Catch</span>
+        </a>
+        <div class="nav_list">
+          <a href="#" class="nav_link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class='bx bx-grid-alt nav_icon'></i>
+            <span class="nav_name">Dashboard</span>
+          </a>
+          <a href="#" class="nav_link">
+            <i class='bx bx-buildings nav_icon'></i>
+            <span class="nav_name">Projects</span>
+          </a>
+          <a href="#" class="nav_link" [routerLink]="['/issues']" routerLinkActive="active">
+            <i class='bx bx-folder nav_icon'></i>
+            <span class="nav_name">Issues</span>
+          </a>
+
+          <a href="#" class="nav_link" [routerLink]="['/users']" routerLinkActive="active">
+            <i class='bx bx-user nav_icon'></i>
+            <span class="nav_name">Users</span>
+          </a>
+          <a href="#" class="nav_link" [routerLink]="['/hzfunctions']" routerLinkActive="active">
+            <i class='bx bx-category-alt nav_icon'></i>
+            <span class="nav_name">Functions</span>
+          </a>
+          <a href="#" class="nav_link">
+            <i class='bx bx-bell-plus nav_icon'></i>
+            <span class="nav_name">System Alerts</span>
+          </a>
+        </div>
+      </div>
+      <a href="#" class="nav_link" (click)="logout()">
+        <i class='bx bx-log-out nav_icon'></i>
+        <span class="nav_name">SignOut</span>
+      </a>
+    </nav>
+  </div>
+  <div class="height-100 bg-light main-content">
+    <ng-content></ng-content>
+
+    <!-- <div class="footer d-flex align-items-center justify-content-center">
+      FOOTER
+    </div> -->
+  </div>

@@ -1,0 +1,16 @@
+<div class="btn-group" dropdown>
+  <button id="button-basic" dropdownToggle type="button" class="btn btn-secondary dropdown-toggle">
+    Status <span class="caret"></span>
+  </button>
+  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu">
+    <li role="menuitem"><a class="dropdown-item" (click)="updateStatus('New')">New</a></li>
+    <li role="menuitem"><a class="dropdown-item" (click)="updateStatus('Earliest Convenience')">Earliest Convenience</a></li>
+    <li role="menuitem"><a class="dropdown-item" (click)="updateStatus('Critical Path')">Critical Path</a></li>
+    <li role="menuitem"><a class="dropdown-item" (click)="updateStatus('Within 1 Week')">Within 1 Week</a></li>
+    <li role="menuitem"><a class="dropdown-item" (click)="updateStatus('Within 2 Weeks')">Within 2 Weeks</a></li>
+    <li role="menuitem"><a class="dropdown-item" (click)="updateStatus('Prior to Production')">Prior to Production</a></li>
+    <li class="divider dropdown-divider"></li>
+    <li role="menuitem"><a class="dropdown-item" (click)="updateStatus('Resolved')">Resolved</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,14 @@
+<ul class="list-group list-group-flush">
+  <li class="list-group-item" *ngFor="let comment of issue.comments">
+    <div class="mb-2 d-flex justify-content-between">
+      <div>
+        {{comment.commentor.username}} <span class="text-muted">added a comment -</span>
+        {{comment.comment_on | date:'short'}}
+      </div>
+    </div>
+    <div>{{comment.comment}}</div>
+    <div *ngIf="comment.file_name" class="mt-2">
+      <img [src]="'http://127.0.0.1:5000/issues/comments/' + comment.id + '/image'">
+    </div>
+  </li>
+</ul>
